@@ -173,25 +173,25 @@ function formatDate(dateString) {
 
 function getTodayDate() {
     const today = new Date();
-    return today.toISOString().split('T')[0];
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 function getTomorrowDate() {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toISOString().split('T')[0];
+    const year = tomorrow.getFullYear();
+    const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
+    const day = tomorrow.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 function isWeekend(dateString) {
     const date = new Date(dateString);
     const day = date.getDay();
-    return day === 0 || day === 6; // 0 - воскресенье, 6 - суббота
-}
-
-function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        searchFilms();
-    }
+    return day === 0 || day === 6;
 }
 
 // ========== ФУНКЦИИ ПОИСКА И ФИЛЬТРАЦИИ ==========
@@ -201,6 +201,8 @@ function searchFilms() {
     const genreFilter = document.getElementById('genreFilter').value;
     const dateFilter = document.getElementById('dateFilter').value;
     const priceFilter = document.getElementById('priceFilter').value;
+    
+    console.log('Поиск фильмов:', { searchTerm, genreFilter, dateFilter, priceFilter });
     
     let filteredFilms = filmsData.filter(film => {
         // Поиск по названию (русскому и английскому)
@@ -249,28 +251,35 @@ function searchFilms() {
     // Показываем количество найденных фильмов
     const resultsCount = document.getElementById('results');
     if (filteredFilms.length > 0) {
-        resultsCount.setAttribute('data-count', `Найдено фильмов: ${filteredFilms.length}`);
+        console.log(`Найдено фильмов: ${filteredFilms.length}`);
     }
 }
 
 function applyFilters() {
+    console.log('Применение фильтров');
     searchFilms();
 }
 
 function resetFilters() {
+    console.log('Сброс фильтров');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
-    document.getElementById('dateFilter').value = 'all';
+    document.getElementById('dateFilter').value = 'today';
     document.getElementById('priceFilter').value = 'all';
     searchFilms();
 }
 
 function showTodaySessions() {
+    console.log('Показ сеансов на сегодня');
     document.getElementById('dateFilter').value = 'today';
+    document.getElementById('genreFilter').value = '';
+    document.getElementById('priceFilter').value = 'all';
+    document.getElementById('searchInput').value = '';
     searchFilms();
 }
 
 function showNewFilms() {
+    console.log('Показ новинок');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
     document.getElementById('dateFilter').value = 'all';
@@ -281,6 +290,7 @@ function showNewFilms() {
 }
 
 function showBestFilms() {
+    console.log('Показ лучших фильмов');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
     document.getElementById('dateFilter').value = 'all';
@@ -294,6 +304,11 @@ function showBestFilms() {
 
 function displayResults(films) {
     const resultsDiv = document.getElementById('results');
+    
+    if (!resultsDiv) {
+        console.error('Элемент results не найден!');
+        return;
+    }
     
     if (films.length === 0) {
         resultsDiv.innerHTML = `
@@ -436,20 +451,95 @@ function confirmBooking(filmId, date, time, price) {
     }, 500);
 }
 
+// ========== НАСТРОЙКА ОБРАБОТЧИКОВ СОБЫТИЙ ==========
+
+function setupEventListeners() {
+    console.log('Настройка обработчиков событий...');
+    
+    // Кнопка поиска
+    const searchButton = document.getElementById('searchButton');
+    if (searchButton) {
+        console.log('Кнопка поиска найдена');
+        searchButton.addEventListener('click', searchFilms);
+    } else {
+        console.error('Кнопка поиска не найдена!');
+    }
+    
+    // Кнопка применения фильтров
+    const applyFiltersButton = document.getElementById('applyFiltersButton');
+    if (applyFiltersButton) {
+        console.log('Кнопка применения фильтров найдена');
+        applyFiltersButton.addEventListener('click', applyFilters);
+    }
+    
+    // Кнопка "Сегодня в кино"
+    const todayBtn = document.getElementById('todayBtn');
+    if (todayBtn) {
+        console.log('Кнопка "Сегодня в кино" найдена');
+        todayBtn.addEventListener('click', showTodaySessions);
+    }
+    
+    // Кнопка "Новинки"
+    const newBtn = document.getElementById('newBtn');
+    if (newBtn) {
+        console.log('Кнопка "Новинки" найдена');
+        newBtn.addEventListener('click', showNewFilms);
+    }
+    
+    // Кнопка "Лучшие"
+    const bestBtn = document.getElementById('bestBtn');
+    if (bestBtn) {
+        console.log('Кнопка "Лучшие" найдена');
+        bestBtn.addEventListener('click', showBestFilms);
+    }
+    
+    // Кнопка "Сбросить"
+    const resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+        console.log('Кнопка "Сбросить" найдена');
+        resetBtn.addEventListener('click', resetFilters);
+    }
+    
+    // Поиск по Enter
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                console.log('Нажата клавиша Enter');
+                searchFilms();
+            }
+        });
+    }
+    
+    // Автоматический поиск при изменении фильтров
+    const genreFilter = document.getElementById('genreFilter');
+    const dateFilter = document.getElementById('dateFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    
+    if (genreFilter) genreFilter.addEventListener('change', searchFilms);
+    if (dateFilter) dateFilter.addEventListener('change', searchFilms);
+    if (priceFilter) priceFilter.addEventListener('change', searchFilms);
+    
+    console.log('Все обработчики событий настроены');
+}
+
 // ========== ИНИЦИАЛИЗАЦИЯ ==========
 
 // Загружаем фильмы при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🐧 Kino Penguin Web App загружен!');
+    
+    // Настраиваем обработчики событий
+    setupEventListeners();
+    
+    // Показываем фильмы
     displayResults(filmsData);
     
     // Устанавливаем сегодняшнюю дату в фильтр по умолчанию
-    document.getElementById('dateFilter').value = 'today';
-    
-    // Показываем приветственное сообщение
-    setTimeout(() => {
-        console.log('Добро пожаловать в Kino Penguin!');
-    }, 1000);
+    const dateFilter = document.getElementById('dateFilter');
+    if (dateFilter) {
+        dateFilter.value = 'today';
+    }
 });
 
 // Экспортируем функции для глобального доступа
@@ -461,4 +551,3 @@ window.showNewFilms = showNewFilms;
 window.showBestFilms = showBestFilms;
 window.bookTicket = bookTicket;
 window.confirmBooking = confirmBooking;
-window.handleKeyPress = handleKeyPress;
