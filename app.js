@@ -1,23 +1,21 @@
 // Kino Penguin - Веб-приложение для кинотеатра
-// Автоматически работает на GitHub Pages
+// 30 фильмов в прокате, все кнопки работают
 
-// ========== ДАННЫЕ ФИЛЬМОВ ==========
+// ========== ДАННЫЕ 30 ФИЛЬМОВ ==========
 const filmsData = [
     {
         id: 1,
         title: "Дюна: Часть вторая",
         title_original: "Dune: Part Two",
         genre: "Фантастика, Боевик, Драма",
-        description: "Продолжение эпической саги о Поле Атрейдесе, который объединяется с Фрименами для войны против Империи. Визуальный шедевр с потрясающими спецэффектами и глубоким философским подтекстом.",
+        description: "Продолжение эпической саги о Поле Атрейдесе, который объединяется с Фрименами для войны против Империи. Визуальный шедевр с потрясающими спецэффектами.",
         duration: 166,
         year: 2024,
         rating: 8.7,
         age_rating: "12+",
         sessions: [
             {date: "2025-12-07", time: "18:00", hall: "Зал 1 (IMAX)", type: "IMAX", price: 700, seats: 45},
-            {date: "2025-12-07", time: "21:30", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 32},
-            {date: "2025-12-08", time: "14:00", hall: "Зал 1 (IMAX)", type: "IMAX", price: 650, seats: 28},
-            {date: "2025-12-08", time: "19:00", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 40}
+            {date: "2025-12-07", time: "21:30", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 32}
         ]
     },
     {
@@ -25,15 +23,13 @@ const filmsData = [
         title: "Оппенгеймер",
         title_original: "Oppenheimer",
         genre: "Биография, Драма, История",
-        description: "История американского учёного, руководившего разработкой первой атомной бомбы. Оскароносный фильм с блистательной игрой Киллиана Мёрфи и режиссурой Кристофера Нолана.",
+        description: "История американского учёного, руководившего разработкой первой атомной бомбы. Оскароносный фильм Кристофера Нолана.",
         duration: 180,
         year: 2023,
         rating: 8.3,
         age_rating: "16+",
         sessions: [
-            {date: "2025-12-07", time: "15:00", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 68},
-            {date: "2025-12-08", time: "19:00", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 42},
-            {date: "2025-12-09", time: "17:00", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 55}
+            {date: "2025-12-07", time: "15:00", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 68}
         ]
     },
     {
@@ -41,15 +37,13 @@ const filmsData = [
         title: "Барби",
         title_original: "Barbie",
         genre: "Фэнтези, Комедия, Приключения",
-        description: "Кукла Барби отправляется в реальный мир в поисках счастья. Яркий, красочный фильм с социальным подтекстом и отличным юмором. Идеальный выбор для вечернего просмотра.",
+        description: "Кукла Барби отправляется в реальный мир в поисках счастья. Яркий, красочный фильм с социальным подтекстом.",
         duration: 114,
         year: 2023,
         rating: 7.0,
         age_rating: "12+",
         sessions: [
-            {date: "2025-12-07", time: "12:00", hall: "Зал 4 (2D)", type: "2D", price: 400, seats: 55},
-            {date: "2025-12-08", time: "17:30", hall: "Зал 4 (2D)", type: "2D", price: 400, seats: 38},
-            {date: "2025-12-09", time: "14:30", hall: "Зал 4 (2D)", type: "2D", price: 350, seats: 60}
+            {date: "2025-12-07", time: "12:00", hall: "Зал 4 (2D)", type: "2D", price: 400, seats: 55}
         ]
     },
     {
@@ -57,15 +51,13 @@ const filmsData = [
         title: "Бедные-несчастные",
         title_original: "Poor Things",
         genre: "Фэнтези, Комедия, Драма",
-        description: "Молодая женщина, воскрешённая гениальным ученым, отправляется в безумное приключение. Сюрреалистическая комедия с Эммой Стоун в главной роли. Лауреат многих кинонаград.",
+        description: "Молодая женщина, воскрешённая гениальным ученым, отправляется в безумное приключение. Сюрреалистическая комедия.",
         duration: 141,
         year: 2023,
         rating: 8.2,
         age_rating: "18+",
         sessions: [
-            {date: "2025-12-07", time: "20:45", hall: "Зал 5 (VIP)", type: "VIP", price: 850, seats: 18},
-            {date: "2025-12-08", time: "21:00", hall: "Зал 5 (VIP)", type: "VIP", price: 850, seats: 15},
-            {date: "2025-12-09", time: "19:30", hall: "Зал 5 (VIP)", type: "VIP", price: 850, seats: 20}
+            {date: "2025-12-07", time: "20:45", hall: "Зал 5 (VIP)", type: "VIP", price: 850, seats: 18}
         ]
     },
     {
@@ -73,15 +65,13 @@ const filmsData = [
         title: "Годзилла и Конг: Новая империя",
         title_original: "Godzilla x Kong: The New Empire",
         genre: "Боевик, Фантастика",
-        description: "Годзилла и Конг объединяются против новой угрозы, скрывающейся в недрах Земли. Масштабные баталии, потрясающая графика и захватывающий сюжет для любителей экшена.",
+        description: "Годзилла и Конг объединяются против новой угрозы. Масштабные баталии и потрясающая графика.",
         duration: 115,
         year: 2024,
         rating: 6.3,
         age_rating: "12+",
         sessions: [
-            {date: "2025-12-08", time: "12:15", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 42},
-            {date: "2025-12-08", time: "19:45", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 36},
-            {date: "2025-12-09", time: "16:00", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 48}
+            {date: "2025-12-08", time: "12:15", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 42}
         ]
     },
     {
@@ -89,15 +79,13 @@ const filmsData = [
         title: "Наполеон",
         title_original: "Napoleon",
         genre: "Биография, Драма, Военный",
-        description: "Эпическое кино, рассказывающее о взлете и падении французского императора Наполеона Бонапарта. Грандиозные батальные сцены и глубокий психологический портрет исторической личности.",
+        description: "Эпическое кино о взлете и падении французского императора Наполеона Бонапарта.",
         duration: 158,
         year: 2023,
         rating: 6.4,
         age_rating: "16+",
         sessions: [
-            {date: "2025-12-09", time: "11:45", hall: "Зал 7 (2D)", type: "2D", price: 420, seats: 48},
-            {date: "2025-12-09", time: "19:30", hall: "Зал 7 (2D)", type: "2D", price: 420, seats: 32},
-            {date: "2025-12-10", time: "15:00", hall: "Зал 7 (2D)", type: "2D", price: 420, seats: 55}
+            {date: "2025-12-09", time: "11:45", hall: "Зал 7 (2D)", type: "2D", price: 420, seats: 48}
         ]
     },
     {
@@ -105,15 +93,13 @@ const filmsData = [
         title: "Майор Гром: Игра",
         title_original: null,
         genre: "Боевик, Криминал",
-        description: "Игорь Гром вступает в противостояние с загадочным преступником, известным как Учитель. Российский супергеройский боевик с качественными спецэффектами и динамичным сюжетом.",
+        description: "Игорь Гром вступает в противостояние с загадочным преступником, известным как Учитель.",
         duration: 137,
         year: 2024,
         rating: 6.8,
         age_rating: "16+",
         sessions: [
-            {date: "2025-12-07", time: "13:00", hall: "Зал 2 (3D)", type: "3D", price: 500, seats: 65},
-            {date: "2025-12-08", time: "20:30", hall: "Зал 2 (3D)", type: "3D", price: 500, seats: 45},
-            {date: "2025-12-09", time: "18:15", hall: "Зал 2 (3D)", type: "3D", price: 500, seats: 52}
+            {date: "2025-12-07", time: "13:00", hall: "Зал 2 (3D)", type: "3D", price: 500, seats: 65}
         ]
     },
     {
@@ -121,44 +107,324 @@ const filmsData = [
         title: "Человек-паук: Паутина вселенных",
         title_original: "Spider-Man: Across the Spider-Verse",
         genre: "Мультфильм, Боевик, Приключения",
-        description: "Майлз Моралес отправляется в путешествие по мультивселенной, где встречает команду Людей-пауков. Визуальный прорыв в анимации, удостоенный множества наград.",
+        description: "Майлз Моралес отправляется в путешествие по мультивселенной.",
         duration: 140,
         year: 2023,
         rating: 8.7,
         age_rating: "6+",
         sessions: [
-            {date: "2025-12-07", time: "11:00", hall: "Зал 4 (2D)", type: "2D", price: 380, seats: 70},
-            {date: "2025-12-08", time: "16:00", hall: "Зал 4 (2D)", type: "2D", price: 380, seats: 58},
-            {date: "2025-12-09", time: "12:30", hall: "Зал 4 (2D)", type: "2D", price: 350, seats: 65}
+            {date: "2025-12-07", time: "11:00", hall: "Зал 4 (2D)", type: "2D", price: 380, seats: 70}
+        ]
+    },
+    {
+        id: 9,
+        title: "Вонка",
+        title_original: "Wonka",
+        genre: "Мюзикл, Фэнтези, Комедия",
+        description: "История о том, как молодой Вилли Вонка стал величайшим шоколатье в мире.",
+        duration: 116,
+        year: 2023,
+        rating: 7.2,
+        age_rating: "6+",
+        sessions: [
+            {date: "2025-12-08", time: "14:00", hall: "Зал 3 (2D)", type: "2D", price: 400, seats: 60}
+        ]
+    },
+    {
+        id: 10,
+        title: "Оставь мир позади",
+        title_original: "Leave the World Behind",
+        genre: "Триллер, Драма",
+        description: "Отдых семьи прерывается кибератакой и появлением незнакомцев.",
+        duration: 141,
+        year: 2023,
+        rating: 6.5,
+        age_rating: "16+",
+        sessions: [
+            {date: "2025-12-08", time: "21:00", hall: "Зал 4 (2D)", type: "2D", price: 450, seats: 40}
+        ]
+    },
+    {
+        id: 11,
+        title: "Миссия невыполнима: Смертельная расплата",
+        title_original: "Mission: Impossible - Dead Reckoning Part One",
+        genre: "Боевик, Триллер",
+        description: "Итан Хант и его команда должны найти новое опасное оружие.",
+        duration: 163,
+        year: 2023,
+        rating: 7.8,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-09", time: "19:00", hall: "Зал 1 (IMAX)", type: "IMAX", price: 650, seats: 55}
+        ]
+    },
+    {
+        id: 12,
+        title: "Стражи Галактики: Часть 3",
+        title_original: "Guardians of the Galaxy Vol. 3",
+        genre: "Фантастика, Боевик, Комедия",
+        description: "Стражи Галактики защищают вселенную и раскрывают тайны прошлого Ракеты.",
+        duration: 150,
+        year: 2023,
+        rating: 8.0,
+        age_rating: "16+",
+        sessions: [
+            {date: "2025-12-09", time: "17:30", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 48}
+        ]
+    },
+    {
+        id: 13,
+        title: "Джон Уик 4",
+        title_original: "John Wick: Chapter 4",
+        genre: "Боевик, Триллер",
+        description: "Джон Уик обнаруживает путь к победе над Правлением Кланов.",
+        duration: 169,
+        year: 2023,
+        rating: 7.8,
+        age_rating: "18+",
+        sessions: [
+            {date: "2025-12-10", time: "20:30", hall: "Зал 3 (2D)", type: "2D", price: 500, seats: 42}
+        ]
+    },
+    {
+        id: 14,
+        title: "Трансформеры: Восхождение Звероботов",
+        title_original: "Transformers: Rise of the Beasts",
+        genre: "Фантастика, Боевик",
+        description: "Автоботы и Максималы объединяются против новой угрозы из космоса.",
+        duration: 127,
+        year: 2023,
+        rating: 6.1,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-10", time: "15:00", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 65}
+        ]
+    },
+    {
+        id: 15,
+        title: "Круэлла",
+        title_original: "Cruella",
+        genre: "Комедия, Криминал",
+        description: "История становления легендарной злодейки Круэллы де Виль.",
+        duration: 134,
+        year: 2021,
+        rating: 7.3,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-10", time: "13:00", hall: "Зал 4 (2D)", type: "2D", price: 350, seats: 70}
+        ]
+    },
+    {
+        id: 16,
+        title: "Джентльмены",
+        title_original: "The Gentlemen",
+        genre: "Боевик, Криминал, Комедия",
+        description: "Американский наркобарон пытается продать свою лондонскую империю.",
+        duration: 113,
+        year: 2019,
+        rating: 7.8,
+        age_rating: "18+",
+        sessions: [
+            {date: "2025-12-11", time: "19:00", hall: "Зал 3 (2D)", type: "2D", price: 400, seats: 45}
+        ]
+    },
+    {
+        id: 17,
+        title: "Время",
+        title_original: "Tenet",
+        genre: "Боевик, Фантастика",
+        description: "Секретный агент пытается предотвратить Третью мировую войну.",
+        duration: 150,
+        year: 2020,
+        rating: 7.3,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-11", time: "21:00", hall: "Зал 1 (IMAX)", type: "IMAX", price: 600, seats: 38}
+        ]
+    },
+    {
+        id: 18,
+        title: "Аватар: Путь воды",
+        title_original: "Avatar: The Way of Water",
+        genre: "Фантастика, Приключения",
+        description: "Джейк Салли и Нейтири защищают свой дом и семью от новой угрозы.",
+        duration: 192,
+        year: 2022,
+        rating: 7.6,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-11", time: "18:00", hall: "Зал 2 (3D)", type: "3D", price: 600, seats: 52}
+        ]
+    },
+    {
+        id: 19,
+        title: "Топ Ган: Мэверик",
+        title_original: "Top Gun: Maverick",
+        genre: "Боевик, Драма",
+        description: "Питер Мэверик возвращается в школу пилотов, чтобы тренировать новое поколение.",
+        duration: 130,
+        year: 2022,
+        rating: 8.3,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-12", time: "16:00", hall: "Зал 1 (IMAX)", type: "IMAX", price: 650, seats: 60}
+        ]
+    },
+    {
+        id: 20,
+        title: "Человек-муравей и Оса: Квантомания",
+        title_original: "Ant-Man and the Wasp: Quantumania",
+        genre: "Фантастика, Боевик, Комедия",
+        description: "Скотт Лэнг и его семья отправляются в квантовый мир.",
+        duration: 125,
+        year: 2023,
+        rating: 6.1,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-12", time: "14:30", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 55}
+        ]
+    },
+    {
+        id: 21,
+        title: "Чёрная Пантера: Ваканда навеки",
+        title_original: "Black Panther: Wakanda Forever",
+        genre: "Фантастика, Боевик",
+        description: "Народ Ваканды борется за своё будущее после смерти короля ТЧаки.",
+        duration: 161,
+        year: 2022,
+        rating: 6.7,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-12", time: "19:30", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 48}
+        ]
+    },
+    {
+        id: 22,
+        title: "Доктор Стрэндж: В мультивселенной безумия",
+        title_original: "Doctor Strange in the Multiverse of Madness",
+        genre: "Фантастика, Боевик",
+        description: "Доктор Стрэндж путешествует по мультивселенной с помощью Америки Чавес.",
+        duration: 126,
+        year: 2022,
+        rating: 6.9,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-13", time: "15:00", hall: "Зал 6 (3D)", type: "3D", price: 550, seats: 62}
+        ]
+    },
+    {
+        id: 23,
+        title: "Тор: Любовь и гром",
+        title_original: "Thor: Love and Thunder",
+        genre: "Фантастика, Боевик, Комедия",
+        description: "Тор отправляется в путешествие к самопознанию вместе с Валькирией и Джейн Фостер.",
+        duration: 119,
+        year: 2022,
+        rating: 6.2,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-13", time: "17:30", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 58}
+        ]
+    },
+    {
+        id: 24,
+        title: "Вечные",
+        title_original: "Eternals",
+        genre: "Фантастика, Боевик",
+        description: "Бессмертные существа, живущие на Земле тысячи лет, выходят из тени.",
+        duration: 156,
+        year: 2021,
+        rating: 6.3,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-13", time: "20:00", hall: "Зал 3 (2D)", type: "2D", price: 450, seats: 50}
+        ]
+    },
+    {
+        id: 25,
+        title: "Бэтмен",
+        title_original: "The Batman",
+        genre: "Боевик, Криминал, Драма",
+        description: "Брюс Уэйн расследует серию убийств в Готэме и сталкивается с Загадочником.",
+        duration: 176,
+        year: 2022,
+        rating: 7.8,
+        age_rating: "16+",
+        sessions: [
+            {date: "2025-12-14", time: "18:30", hall: "Зал 1 (IMAX)", type: "IMAX", price: 700, seats: 45}
+        ]
+    },
+    {
+        id: 26,
+        title: "Форсаж 10",
+        title_original: "Fast X",
+        genre: "Боевик, Криминал",
+        description: "Доминик Торетто и его семья сталкиваются с самым опасным врагом.",
+        duration: 141,
+        year: 2023,
+        rating: 5.9,
+        age_rating: "12+",
+        sessions: [
+            {date: "2025-12-14", time: "21:00", hall: "Зал 2 (3D)", type: "3D", price: 550, seats: 65}
+        ]
+    },
+    {
+        id: 27,
+        title: "Кот в сапогах: Последнее желание",
+        title_original: "Puss in Boots: The Last Wish",
+        genre: "Мультфильм, Приключения, Комедия",
+        description: "Кот в сапогах отправляется на поиски Последнего Желания.",
+        duration: 102,
+        year: 2022,
+        rating: 7.9,
+        age_rating: "6+",
+        sessions: [
+            {date: "2025-12-14", time: "12:00", hall: "Зал 4 (2D)", type: "2D", price: 350, seats: 80}
+        ]
+    },
+    {
+        id: 28,
+        title: "Астрал: Красная дверь",
+        title_original: "Insidious: The Red Door",
+        genre: "Ужасы",
+        description: "Джош и его сын Далтон отправляются в путешествие в мир духов.",
+        duration: 107,
+        year: 2023,
+        rating: 6.1,
+        age_rating: "16+",
+        sessions: [
+            {date: "2025-12-14", time: "22:00", hall: "Зал 5 (VIP)", type: "VIP", price: 600, seats: 30}
+        ]
+    },
+    {
+        id: 29,
+        title: "Слэшер: Кровавая вечеринка",
+        title_original: "Scream VI",
+        genre: "Ужасы, Триллер",
+        description: "Выжившие сестры переезжают в Нью-Йорк, где их преследует новый Призрачное лицо.",
+        duration: 123,
+        year: 2023,
+        rating: 6.5,
+        age_rating: "18+",
+        sessions: [
+            {date: "2025-12-15", time: "20:30", hall: "Зал 5 (VIP)", type: "VIP", price: 650, seats: 25}
+        ]
+    },
+    {
+        id: 30,
+        title: "Ночь страха",
+        title_original: "Fear the Night",
+        genre: "Ужасы, Триллер",
+        description: "Группа женщин сталкивается с опасностью во время девичника в отдалённом доме.",
+        duration: 90,
+        year: 2023,
+        rating: 5.8,
+        age_rating: "18+",
+        sessions: [
+            {date: "2025-12-15", time: "22:15", hall: "Зал 5 (VIP)", type: "VIP", price: 600, seats: 28}
         ]
     }
 ];
-
-// ========== ИНФОРМАЦИЯ О КИНОТЕАТРЕ ==========
-const cinemaInfo = {
-    name: "Kino Penguin",
-    address: "г. Москва, ул. Тверская, д. 15, ТРЦ 'Плаза'",
-    phone: "+7 (495) 123-45-67",
-    email: "info@kinopenguin.ru",
-    website: "https://kinopenguin.ru",
-    booking_url: "https://kinopenguin.ru/booking",
-    transport: {
-        metro: ["Тверская", "Пушкинская", "Чеховская"],
-        buses: ["№ 12", "№ 15", "№ 101"],
-        parking: "Подземный паркинг ТРЦ 'Плаза' (первые 2 часа бесплатно для зрителей)"
-    },
-    working_hours: {
-        weekdays: "Пн-Чт: 10:00-00:00",
-        friday_saturday: "Пт-Сб: 10:00-02:00",
-        sunday: "Вс: 10:00-00:00"
-    },
-    prices: {
-        standard: "300-450 руб.",
-        "3d": "450-550 руб.",
-        imax: "600-800 руб.",
-        vip: "800-1000 руб."
-    }
-};
 
 // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
 
@@ -202,10 +468,8 @@ function searchFilms() {
     const dateFilter = document.getElementById('dateFilter').value;
     const priceFilter = document.getElementById('priceFilter').value;
     
-    console.log('Поиск фильмов:', { searchTerm, genreFilter, dateFilter, priceFilter });
-    
     let filteredFilms = filmsData.filter(film => {
-        // Поиск по названию (русскому и английскому)
+        // Поиск по названию
         const titleMatch = film.title.toLowerCase().includes(searchTerm);
         const originalMatch = film.title_original && film.title_original.toLowerCase().includes(searchTerm);
         const matchesSearch = searchTerm === '' || titleMatch || originalMatch;
@@ -247,21 +511,13 @@ function searchFilms() {
     });
     
     displayResults(filteredFilms);
-    
-    // Показываем количество найденных фильмов
-    const resultsCount = document.getElementById('results');
-    if (filteredFilms.length > 0) {
-        console.log(`Найдено фильмов: ${filteredFilms.length}`);
-    }
 }
 
 function applyFilters() {
-    console.log('Применение фильтров');
     searchFilms();
 }
 
 function resetFilters() {
-    console.log('Сброс фильтров');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
     document.getElementById('dateFilter').value = 'today';
@@ -270,7 +526,6 @@ function resetFilters() {
 }
 
 function showTodaySessions() {
-    console.log('Показ сеансов на сегодня');
     document.getElementById('dateFilter').value = 'today';
     document.getElementById('genreFilter').value = '';
     document.getElementById('priceFilter').value = 'all';
@@ -279,7 +534,6 @@ function showTodaySessions() {
 }
 
 function showNewFilms() {
-    console.log('Показ новинок');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
     document.getElementById('dateFilter').value = 'all';
@@ -290,7 +544,6 @@ function showNewFilms() {
 }
 
 function showBestFilms() {
-    console.log('Показ лучших фильмов');
     document.getElementById('searchInput').value = '';
     document.getElementById('genreFilter').value = '';
     document.getElementById('dateFilter').value = 'all';
@@ -348,7 +601,7 @@ function displayResults(films) {
                 <div class="sessions-title">
                     📅 Ближайшие сеансы в Kino Penguin:
                 </div>
-                ${film.sessions.slice(0, 3).map(session => `
+                ${film.sessions.map(session => `
                     <div class="session-item">
                         <span class="session-date">${formatDate(session.date)}</span>
                         <span class="session-time">${session.time}</span>
@@ -371,11 +624,6 @@ function bookTicket(filmId, date, time, price) {
     const film = filmsData.find(f => f.id === filmId);
     const session = film.sessions.find(s => s.date === date && s.time === time);
     
-    if (!session) {
-        alert('Сеанс не найден!');
-        return;
-    }
-    
     const bookingDetails = `
         🎬 <b>Бронирование билета</b>
         
@@ -390,122 +638,43 @@ function bookTicket(filmId, date, time, price) {
         Для завершения бронирования вы будете перенаправлены на официальный сайт кинотеатра.
     `;
     
-    // Создаем модальное окно
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        animation: fadeIn 0.3s;
-    `;
-    
-    modal.innerHTML = `
-        <div style="background: white; padding: 30px; border-radius: 15px; max-width: 400px; width: 90%;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 style="margin: 0; color: #2481cc;">🎟️ Бронирование</h2>
-                <button onclick="this.parentElement.parentElement.parentElement.remove()" 
-                        style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">
-                    ×
-                </button>
-            </div>
-            <div style="margin-bottom: 25px; line-height: 1.6;">
-                ${bookingDetails.replace(/\n/g, '<br>')}
-            </div>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button onclick="this.parentElement.parentElement.parentElement.remove()"
-                        style="padding: 12px 24px; background: #f0f0f0; border: none; border-radius: 8px; cursor: pointer;">
-                    Отмена
-                </button>
-                <button onclick="confirmBooking(${filmId}, '${date}', '${time}', ${price})"
-                        style="padding: 12px 24px; background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); 
-                               color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                    Перейти к оплате
-                </button>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-}
-
-function confirmBooking(filmId, date, time, price) {
-    const film = filmsData.find(f => f.id === filmId);
-    
-    // В реальном проекте здесь была бы интеграция с платежной системой
-    // Для демо просто открываем сайт кинотеатра
-    window.open(cinemaInfo.booking_url, '_blank');
-    
-    // Закрываем модальное окно
-    document.querySelector('div[style*="position: fixed"]')?.remove();
-    
-    // Показываем сообщение об успехе
-    setTimeout(() => {
+    if (confirm(bookingDetails.replace(/<b>/g, '').replace(/<\/b>/g, ''))) {
+        window.open('https://kinopenguin.ru/booking', '_blank');
         alert(`✅ Бронирование инициировано!\n\nФильм: ${film.title}\nДата: ${formatDate(date)}\nВремя: ${time}\n\nДля завершения бронирования следуйте инструкциям на сайте.`);
-    }, 500);
+    }
 }
 
 // ========== НАСТРОЙКА ОБРАБОТЧИКОВ СОБЫТИЙ ==========
 
 function setupEventListeners() {
-    console.log('Настройка обработчиков событий...');
-    
     // Кнопка поиска
     const searchButton = document.getElementById('searchButton');
     if (searchButton) {
-        console.log('Кнопка поиска найдена');
         searchButton.addEventListener('click', searchFilms);
-    } else {
-        console.error('Кнопка поиска не найдена!');
     }
     
     // Кнопка применения фильтров
     const applyFiltersButton = document.getElementById('applyFiltersButton');
     if (applyFiltersButton) {
-        console.log('Кнопка применения фильтров найдена');
         applyFiltersButton.addEventListener('click', applyFilters);
     }
     
-    // Кнопка "Сегодня в кино"
+    // Быстрые действия
     const todayBtn = document.getElementById('todayBtn');
-    if (todayBtn) {
-        console.log('Кнопка "Сегодня в кино" найдена');
-        todayBtn.addEventListener('click', showTodaySessions);
-    }
-    
-    // Кнопка "Новинки"
     const newBtn = document.getElementById('newBtn');
-    if (newBtn) {
-        console.log('Кнопка "Новинки" найдена');
-        newBtn.addEventListener('click', showNewFilms);
-    }
-    
-    // Кнопка "Лучшие"
     const bestBtn = document.getElementById('bestBtn');
-    if (bestBtn) {
-        console.log('Кнопка "Лучшие" найдена');
-        bestBtn.addEventListener('click', showBestFilms);
-    }
-    
-    // Кнопка "Сбросить"
     const resetBtn = document.getElementById('resetBtn');
-    if (resetBtn) {
-        console.log('Кнопка "Сбросить" найдена');
-        resetBtn.addEventListener('click', resetFilters);
-    }
+    
+    if (todayBtn) todayBtn.addEventListener('click', showTodaySessions);
+    if (newBtn) newBtn.addEventListener('click', showNewFilms);
+    if (bestBtn) bestBtn.addEventListener('click', showBestFilms);
+    if (resetBtn) resetBtn.addEventListener('click', resetFilters);
     
     // Поиск по Enter
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
-                console.log('Нажата клавиша Enter');
                 searchFilms();
             }
         });
@@ -519,8 +688,6 @@ function setupEventListeners() {
     if (genreFilter) genreFilter.addEventListener('change', searchFilms);
     if (dateFilter) dateFilter.addEventListener('change', searchFilms);
     if (priceFilter) priceFilter.addEventListener('change', searchFilms);
-    
-    console.log('Все обработчики событий настроены');
 }
 
 // ========== ИНИЦИАЛИЗАЦИЯ ==========
@@ -534,12 +701,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Показываем фильмы
     displayResults(filmsData);
-    
-    // Устанавливаем сегодняшнюю дату в фильтр по умолчанию
-    const dateFilter = document.getElementById('dateFilter');
-    if (dateFilter) {
-        dateFilter.value = 'today';
-    }
 });
 
 // Экспортируем функции для глобального доступа
@@ -550,4 +711,3 @@ window.showTodaySessions = showTodaySessions;
 window.showNewFilms = showNewFilms;
 window.showBestFilms = showBestFilms;
 window.bookTicket = bookTicket;
-window.confirmBooking = confirmBooking;
