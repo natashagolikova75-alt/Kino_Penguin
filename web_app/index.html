@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kino Penguin - Поиск фильмов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐧 Kino Penguin</h1>
+            <p class="subtitle">Ваш цифровой помощник по поиску фильмов</p>
+        </div>
+        
+        <div class="info-card">
+            <div class="cinema-info">
+                <h2>🏢 О кинотеатре</h2>
+                <p><strong>📍 Адрес:</strong> г. Москва, ул. Тверская, д. 15, ТРЦ "Плаза"</p>
+                <p><strong>📞 Телефон:</strong> +7 (495) 123-45-67</p>
+                <p><strong>🌐 Сайт:</strong> <a href="https://kinopenguin.ru" target="_blank">kinopenguin.ru</a></p>
+                <p><strong>🎟️ Бронирование:</strong> <a href="https://kinopenguin.ru/booking" target="_blank">kinopenguin.ru/booking</a></p>
+            </div>
+            
+            <div class="transport-info">
+                <h2>🚌 Как добраться</h2>
+                <p><strong>🚇 Метро:</strong> "Тверская", "Пушкинская", "Чеховская"</p>
+                <p><strong>🚍 Автобусы:</strong> № 12, 15, 101 до ост. "Тверская площадь"</p>
+                <p><strong>🚗 Парковка:</strong> Подземный паркинг ТРЦ "Плаза"</p>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Введите название фильма...">
+            <button onclick="searchFilms()">🔍 Поиск</button>
+        </div>
+
+        <div class="filters">
+            <select id="genreFilter">
+                <option value="">Все жанры</option>
+                <option value="Боевик">Боевик</option>
+                <option value="Комедия">Комедия</option>
+                <option value="Драма">Драма</option>
+                <option value="Фантастика">Фантастика</option>
+                <option value="Ужасы">Ужасы</option>
+                <option value="Семейный">Семейный</option>
+                <option value="Мультфильм">Мультфильм</option>
+                <option value="Триллер">Триллер</option>
+            </select>
+            
+            <select id="dateFilter">
+                <option value="all">Все даты</option>
+                <option value="today">Сегодня</option>
+                <option value="tomorrow">Завтра</option>
+                <option value="weekend">Выходные</option>
+            </select>
+            
+            <select id="priceFilter">
+                <option value="all">Любая цена</option>
+                <option value="budget">До 400 руб.</option>
+                <option value="medium">400-600 руб.</option>
+                <option value="premium">От 600 руб.</option>
+            </select>
+            
+            <button onclick="applyFilters()">Применить фильтры</button>
+        </div>
+
+        <div class="quick-actions">
+            <button onclick="showTodaySessions()" class="action-btn">📅 Сегодня в кино</button>
+            <button onclick="showNewFilms()" class="action-btn">🎬 Новинки</button>
+            <button onclick="showBestFilms()" class="action-btn">⭐ Лучшие</button>
+        </div>
+
+        <div id="results" class="results"></div>
+
+        <div class="help-section">
+            <h3>❓ Как пользоваться ботом Kino Penguin</h3>
+            <p>Откройте Telegram и напишите боту:</p>
+            <ul>
+                <li>"Фильмы" - список всех фильмов</li>
+                <li>"Расписание" - сеансы на сегодня</li>
+                <li>"Бронь" - купить билет онлайн</li>
+                <li>"Адрес" - как добраться</li>
+                <li>"Цены" - стоимость билетов</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
