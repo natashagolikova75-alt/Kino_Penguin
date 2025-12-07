@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kino Penguin - Поиск фильмов</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐧</text></svg>">
 </head>
 <body>
     <div class="container">
@@ -18,25 +19,26 @@
                 <h2>🏢 О кинотеатре</h2>
                 <p><strong>📍 Адрес:</strong> г. Москва, ул. Тверская, д. 15, ТРЦ "Плаза"</p>
                 <p><strong>📞 Телефон:</strong> +7 (495) 123-45-67</p>
-                <p><strong>🌐 Сайт:</strong> <a href="https://kinopenguin.ru" target="_blank">kinopenguin.ru</a></p>
-                <p><strong>🎟️ Бронирование:</strong> <a href="https://kinopenguin.ru/booking" target="_blank">kinopenguin.ru/booking</a></p>
+                <p><strong>📧 Email:</strong> info@kinopenguin.ru</p>
+                <p><strong>🌐 Сайт:</strong> <a href="https://kinopenguin.ru" target="_blank" rel="noopener">kinopenguin.ru</a></p>
+                <p><strong>🎟️ Бронирование:</strong> <a href="https://kinopenguin.ru/booking" target="_blank" rel="noopener">kinopenguin.ru/booking</a></p>
             </div>
             
             <div class="transport-info">
                 <h2>🚌 Как добраться</h2>
                 <p><strong>🚇 Метро:</strong> "Тверская", "Пушкинская", "Чеховская"</p>
                 <p><strong>🚍 Автобусы:</strong> № 12, 15, 101 до ост. "Тверская площадь"</p>
-                <p><strong>🚗 Парковка:</strong> Подземный паркинг ТРЦ "Плаза"</p>
+                <p><strong>🚗 Парковка:</strong> Подземный паркинг ТРЦ "Плаза" (первые 2 часа бесплатно)</p>
             </div>
         </div>
 
         <div class="search-section">
-            <input type="text" id="searchInput" placeholder="Введите название фильма...">
+            <input type="text" id="searchInput" placeholder="Введите название фильма..." onkeypress="handleKeyPress(event)">
             <button onclick="searchFilms()">🔍 Поиск</button>
         </div>
 
         <div class="filters">
-            <select id="genreFilter">
+            <select id="genreFilter" onchange="applyFilters()">
                 <option value="">Все жанры</option>
                 <option value="Боевик">Боевик</option>
                 <option value="Комедия">Комедия</option>
@@ -46,16 +48,18 @@
                 <option value="Семейный">Семейный</option>
                 <option value="Мультфильм">Мультфильм</option>
                 <option value="Триллер">Триллер</option>
+                <option value="Приключения">Приключения</option>
+                <option value="Фэнтези">Фэнтези</option>
             </select>
             
-            <select id="dateFilter">
+            <select id="dateFilter" onchange="applyFilters()">
                 <option value="all">Все даты</option>
                 <option value="today">Сегодня</option>
                 <option value="tomorrow">Завтра</option>
                 <option value="weekend">Выходные</option>
             </select>
             
-            <select id="priceFilter">
+            <select id="priceFilter" onchange="applyFilters()">
                 <option value="all">Любая цена</option>
                 <option value="budget">До 400 руб.</option>
                 <option value="medium">400-600 руб.</option>
@@ -69,24 +73,52 @@
             <button onclick="showTodaySessions()" class="action-btn">📅 Сегодня в кино</button>
             <button onclick="showNewFilms()" class="action-btn">🎬 Новинки</button>
             <button onclick="showBestFilms()" class="action-btn">⭐ Лучшие</button>
+            <button onclick="resetFilters()" class="action-btn">🔄 Сбросить</button>
         </div>
 
-        <div id="results" class="results"></div>
+        <div id="results" class="results">
+            <!-- Фильмы будут загружены здесь -->
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">🎬 30+</span>
+                <span class="stat-label">фильмов в прокате</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">🎪 5</span>
+                <span class="stat-label">современных залов</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">💰 300+</span>
+                <span class="stat-label">сеансов в день</span>
+            </div>
+        </div>
 
         <div class="help-section">
-            <h3>❓ Как пользоваться ботом Kino Penguin</h3>
+            <h3>🎯 Как пользоваться ботом Kino Penguin</h3>
             <p>Откройте Telegram и напишите боту:</p>
             <ul>
-                <li>"Фильмы" - список всех фильмов</li>
-                <li>"Расписание" - сеансы на сегодня</li>
-                <li>"Бронь" - купить билет онлайн</li>
-                <li>"Адрес" - как добраться</li>
-                <li>"Цены" - стоимость билетов</li>
+                <li><strong>"Фильмы"</strong> - список всех фильмов</li>
+                <li><strong>"Расписание"</strong> - сеансы на сегодня</li>
+                <li><strong>"Бронь" / "Купить билет"</strong> - покупка билетов онлайн</li>
+                <li><strong>"Адрес" / "Как добраться"</strong> - информация о кинотеатре</li>
+                <li><strong>"Цены" / "Скидки"</strong> - стоимость билетов и акции</li>
+                <li><strong>"Новинки"</strong> - новые фильмы в прокате</li>
             </ul>
+            <p class="telegram-link">
+                <a href="https://t.me/KinoPenguinBot" target="_blank" rel="noopener">
+                    📲 Перейти в Telegram-бот
+                </a>
+            </p>
         </div>
+
+        <footer class="footer">
+            <p>© 2025 Kino Penguin. Все права защищены.</p>
+            <p>Это демо-версия сайта для курсовой работы.</p>
+        </footer>
     </div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>
